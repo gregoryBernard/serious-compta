@@ -1,0 +1,100 @@
+div(layout='row', layout-align='center center')
+  div(flex='35', layout='row', layout-align='center')
+    h2  Saisie
+  div(flex='65', layout='row', layout-align='center')
+    h2  Simulation
+div(layout='row')
+  div(flex='35')
+    md-content.md-whiteframe-z1.form.md-padding(layout='column')
+      div(layout='row', layout-align='center center')
+        div(flex='50', layout='row', layout-align='center')
+          span.helper
+            | TJM
+            md-tooltip(md-direction='right')
+              | C'est le tarif HT moyen par jour pour la prestation
+        div(flex='50')
+          md-input-container
+            label Prix
+            input(ng-model='vm.tjm', type='number', step='10')
+      div(layout='row', layout-align='center center')
+        div(flex='50', layout='row', layout-align='center')
+          md-switch(ng-model='vm.durationtype', aria-label='durationtime')
+            span
+              | Durée mission
+              md-tooltip(md-direction='right')
+                | La durée de la mission en mois ou en jours (il suffit de changer le switch)
+        div(flex='50', ng-if='vm.durationtype')
+          md-input-container
+            label En jours
+            input(ng-model='vm.duration', type='number', step='5')
+        div(flex='50', ng-if='!vm.durationtype')
+          md-input-container
+            label En mois
+            input(ng-model='vm.duration', type='number')
+      div(layout='row', layout-align='center center')
+        div(flex='50', layout='row', layout-align='center')
+          span.helper
+            | % de la société
+            md-tooltip(md-direction='right')
+              | C'est le pourcentage que la société vol à son salarié lol
+        div(flex='50')
+          md-input-container
+            label %
+            input(ng-model='vm.percent', type='number')
+      div(layout='row', layout-align='center center')
+        div(flex='50', layout='row', layout-align='center')
+          span.helper
+            | Salaire
+            md-tooltip(md-direction='right')
+              | C'est le salaire mensuel net désiré par le salarié
+        div(flex='50')
+          md-input-container
+            label Prix
+            input(ng-model='vm.salaire', type='number', step='50')
+      div(layout='row', layout-align='center center')
+        div(flex='50', layout='row', layout-align='center')
+          span.helper
+            | Durée totale
+            md-tooltip(md-direction='right')
+              | C'est la durée totale pendant laquelle le salarié sera rémunéré avec ce qu'il a rapporté
+        div(flex='50')
+          md-input-container
+            label En mois
+            input(ng-model='vm.dureeTotal', type='number')
+  div(flex='65')
+    md-content.md-whiteframe-z1.form.md-padding(layout='column')
+      h2.no-margin  Résultats globaux
+      div(layout='row', layout-align='space-around center', flex='')
+        div(layout='column', layout-align='space-around center', flex='')
+          div
+            h4  Chiffre d'affaire (HT) : {{vm.ca}}€
+          div
+            h4  Coût total du salarié : {{vm.coutSalarie}}€
+          div
+            h4  Delta : {{vm.delta}}€
+        div(layout='column', layout-align='space-around center', flex='')
+          div
+            h4  Bénéfice société : {{vm.benef}}€
+          div
+            h4  Coût total du salarié : {{vm.coutSalarieVariable}}€
+          div
+            h4  Delta : {{vm.deltaVariable}}€
+    div(layout='row', layout-align='space-around center', flex='')
+      md-content.md-whiteframe-z1.form.md-padding(layout='column', flex='')
+        h2.no-margin  Salaire fixe
+        div(layout='column', layout-align='space-around center')
+          div
+            h4  Salaire net : {{vm.snet}}€
+          div
+            h4  Salaire Brut : {{vm.sbrut}}€
+          div
+            h4  Charges patronales : {{vm.chargPatro}}€
+      md-content.md-whiteframe-z1.form.md-padding(layout='column', flex='')
+        h2.no-margin  Nombre de mois fixe
+        div(layout='column', layout-align='space-around center')
+          div
+            h4  Salaire net : {{vm.snetVariable}}€
+          div
+            h4  Salaire Brut : {{vm.sbrutVariable}}€
+          div
+            h4  Charges patronales : {{vm.chargPatroVariable}}€
